@@ -73,13 +73,13 @@ return array(
     'zf-hal' => array(
         'metadata_map' => array(
             'ApiAuth\\V1\\Rest\\Registration\\RegistrationEntity' => array(
-                'entity_identifier_name' => 'id',
+                'entity_identifier_name' => 'user_id',
                 'route_name' => 'api-auth.rest.registration',
                 'route_identifier_name' => 'registration_id',
                 'hydrator' => 'Zend\\Stdlib\\Hydrator\\ArraySerializable',
             ),
             'ApiAuth\\V1\\Rest\\Registration\\RegistrationCollection' => array(
-                'entity_identifier_name' => 'id',
+                'entity_identifier_name' => 'user_id',
                 'route_name' => 'api-auth.rest.registration',
                 'route_identifier_name' => 'registration_id',
                 'is_collection' => true,
