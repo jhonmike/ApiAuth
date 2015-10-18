@@ -1,7 +1,7 @@
 ApiAuth
 =======
 
-	php composer.phar require 2ends/apigility-auth:dev-master
+	php composer.phar require jhonmike/apigility-auth:dev-master
 
 Config Oauth2
 ------
