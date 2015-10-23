@@ -9,6 +9,7 @@ namespace ApiAuth;
 use ZF\Apigility\Provider\ApigilityProviderInterface;
 use Zend\Db\ResultSet\ResultSet;
 use Zend\Db\TableGateway\TableGateway;
+use Zend\Db\Sql\Sql;
 
 class Module implements ApigilityProviderInterface
 {
@@ -32,16 +33,15 @@ class Module implements ApigilityProviderInterface
     {
         return array(
             'factories' => array(
-                'RegistrationTableGateway' => function($sm) {
-                    $dbAdapter = $sm->get('Db\Adapter');
+                'ApiAuth\V1\Rest\Registration\RegistrationMapper' => function($sm) {
+                    $table = 'oauth_users';
+                    $dbAdapter = $sm->get('Db\\Adapter');
                     $resultSetPrototype = new ResultSet();
                     $resultSetPrototype->setArrayObjectPrototype(new \ApiAuth\V1\Rest\Registration\RegistrationEntity);
-                    return new TableGateway('oauth_users', $dbAdapter, null, $resultSetPrototype);
-                },
-                'ApiAuth\V1\Rest\Registration\RegistrationMapper' => function($sm) {
-                    $tableGateway = $sm->get('RegistrationTableGateway');
-                    return new \ApiAuth\V1\Rest\Registration\RegistrationMapper($tableGateway);
-                },
+                    $tableGateway = new TableGateway($table, $dbAdapter, null, $resultSetPrototype);
+                    $sql = new Sql($dbAdapter, $table);
+                    return new \ApiAuth\V1\Rest\Registration\RegistrationMapper($tableGateway, $sql);
+                }
             )
         );
     }

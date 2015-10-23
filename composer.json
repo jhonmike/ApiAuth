@@ -1,8 +1,8 @@
 {
     "name": "jhonmike/apigility-auth",
-    "description": "Abstracts help class for zend 2",
+    "description": "Abstracts help class for oAuth2 in apigility/zend2",
     "type": "library",
-    "keywords": ["apigility","rest","auth","acl","login","user","zend"],
+    "keywords": ["apigility","rest","auth","acl","login","user","zend", "oauth2"],
     "homepage": "https://github.com/jhonmike/ApiAuth",
     "license": "MIT",
     "authors": [
@@ -17,7 +17,7 @@
         "php": ">=5.3.23",
         "zendframework/zendframework": ">=2.3.2,<3.0.0",
         "zfcampus/zf-apigility": "~1.0",
-        "2ends/apigility-base": "dev-master"
+        "jhonmike/apigility-base": "dev-master"
     },
     "autoload": {
         "psr-0": {

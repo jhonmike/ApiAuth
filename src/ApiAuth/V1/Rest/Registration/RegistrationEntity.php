@@ -17,17 +17,14 @@ class RegistrationEntity extends AbstractEntity
     public $password;
     public $firstname;
     public $lastname;
-
-    public function __construct($data = null)
-    {
-        $data = (array) $data;
-        $hydrator = new Hydrator\ArraySerializable();
-        $hydrator->hydrate($data, $this);
-    }
-
-    public function toArray()
+    
+    public function toArray($password = false)
     {
         $hydrator = new Hydrator\ArraySerializable();
-        return $hydrator->extract($this);
+        $result = $hydrator->extract($this);
+        if (!$password)
+            unset($result['password']);
+
+        return $result;
     }
 }

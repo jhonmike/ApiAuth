@@ -12,9 +12,10 @@ use Zend\Crypt\Password\Bcrypt;
 
 class RegistrationMapper extends AbstractMapper
 {
-	public function __construct(TableGateway $tableGateway)
+	public function __construct($tableGateway, $sql)
 	{
 		$this->tableGateway = $tableGateway;
+		$this->sql = $sql;
 	}
 
 	public function save($entity)
